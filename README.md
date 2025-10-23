@@ -170,7 +170,29 @@ npm run build:frontend
 
 2. The built files will be in `frontend/dist/`
 
-3. You can serve the built files using the backend or any static file server.
+3. The backend is configured to serve the built frontend files in production.
+
+## Deployment
+
+### Railway Deployment
+
+This application is configured for single-service deployment on Railway:
+
+1. **Connect your repository** to Railway
+2. **Railway will automatically**:
+   - Run `npm run build` to build the frontend
+   - Run `npm start` to start the backend server
+   - The backend serves both API routes (`/api/*`) and frontend static files
+
+3. **No additional configuration needed** - the app is ready to deploy!
+
+For detailed deployment instructions and troubleshooting, see [RAILWAY_DEPLOYMENT.md](./RAILWAY_DEPLOYMENT.md).
+
+### Production Architecture
+- Single service serves both frontend and backend
+- API routes: `/api/*`
+- All other routes: serve React app
+- No CORS issues or separate domains needed
 
 ## License
 
