@@ -1,10 +1,10 @@
 {
   "name": "viber",
   "version": "1.0.0",
-  "description": "NestJS application with best practices",
+  "description": "AI with Empathy - Combining collective knowledge with personal, empathetic experiences",
   "private": true,
   "license": "ISC",
-  "author": "",
+  "author": "GRAIA Team",
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
@@ -77,7 +77,12 @@
     "nestjs",
     "typescript",
     "api",
-    "rest"
+    "rest",
+    "ai",
+    "empathy",
+    "graia",
+    "innovation",
+    "trust"
   ],
   "engines": {
     "node": ">=20.19.0",

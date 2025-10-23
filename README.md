@@ -1,16 +1,39 @@
-# Viber - NestJS Application
+# GRAIA - AI with Empathy
 
-A modern NestJS application built with best practices, TypeScript, and modular architecture.
+> *From the Croatian word "graja" - a lively hum of voices becoming one*
 
-## Features
+**Combining collective knowledge with personal, empathetic experiences**
+
+A modern NestJS application embodying GRAIA's mission of lowering AI adoption barriers through trust, innovation, and empathetic user experiences.
+
+## Brand Values
+
+**GRAIA** is built on a foundation of:
+- **Trust** - Reliable, secure, and dependable
+- **Optimism** - Forward-thinking and positive
+- **Innovation** - Cutting-edge technology with purpose
+- **Accessibility** - Lowering barriers to AI adoption
+- **Empathy** - Understanding and supporting users at every step
+
+## Brand Identity
+
+### Colors
+- **Primary Blue** (#0066CC) - Trust, competence, integrity
+- **Secondary White** (#FFFFFF) - Clarity, honesty
+- **Accent Red** (#E63946) - Boldness, passion, energy
+
+### Design Philosophy
+Sleek modern lines representing technological sophistication, combined with rounded shapes reflecting approachability and inclusiveness. The arrow symbolizes growth driven by focused strategy.
+
+## Technical Features
 
 - **NestJS Framework** - Progressive Node.js framework for building efficient and scalable server-side applications
 - **TypeScript** - Strongly typed programming language
 - **Modular Architecture** - Well-organized code structure with separate modules
-- **Validation** - Request validation using class-validator and class-transformer
+- **Empathetic Error Handling** - User-friendly, supportive error messages aligned with our "AI with Empathy" philosophy
+- **Request Validation** - Using class-validator and class-transformer
 - **Health Checks** - Built-in health check endpoints using @nestjs/terminus
 - **Configuration Management** - Environment-based configuration using @nestjs/config
-- **Error Handling** - Global exception filters for consistent error responses
 - **API Versioning** - URI-based API versioning
 - **CORS Enabled** - Cross-Origin Resource Sharing configured
 - **Testing** - Jest testing framework configured
@@ -107,7 +130,7 @@ The application will be available at `http://localhost:3000`
 ## API Endpoints
 
 ### Root
-- `GET /` - Welcome message
+- `GET /` - Welcome message with GRAIA branding, values, and mission
 
 ### Health
 - `GET /api/v1/health` - Health check endpoint
@@ -188,12 +211,18 @@ Make sure to set these environment variables in your production environment:
 2. **DTOs** - Data Transfer Objects for request validation
 3. **Entities** - Domain models separated from DTOs
 4. **Services** - Business logic separated from controllers
-5. **Exception Filters** - Global error handling
+5. **Empathetic Exception Handling** - User-friendly error messages with helpful suggestions and support context
 6. **Validation** - Request validation using decorators
-7. **Configuration** - Environment-based configuration
+7. **Brand Configuration** - Centralized brand identity (colors, values, mission)
 8. **Health Checks** - Application health monitoring
 9. **API Versioning** - Versioned API endpoints
 10. **TypeScript** - Full type safety
+
+## Our Mission
+
+**Lowering AI adoption barriers through empathetic user experiences**
+
+GRAIA represents the convergence of collective knowledge, experience, and technology to create personal and empathetic interactions. Every API response, error message, and interaction is designed with our users in mind—because AI should be accessible, understandable, and helpful to everyone.
 
 ## Adding New Modules
 
