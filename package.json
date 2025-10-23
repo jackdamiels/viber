@@ -1,30 +1,26 @@
 {
-  "name": "viber",
-  "version": "1.0.0",
-  "description": "Full-stack application with React + Vite frontend and Node.js backend",
+  "name": "my-app",
+  "version": "0.1.0",
   "private": true,
-  "workspaces": [
-    "frontend",
-    "backend"
-  ],
   "scripts": {
-    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
-    "dev:backend": "cd backend && npm run dev",
-    "dev:frontend": "cd frontend && npm run dev",
-    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
-    "build:frontend": "cd frontend && npm run build",
-    "start:backend": "cd backend && npm start"
+    "dev": "next dev --webpack",
+    "build": "next build --webpack",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "next": "16.0.0"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2"
-  },
-  "keywords": [
-    "fullstack",
-    "react",
-    "vite",
-    "nodejs",
-    "express"
-  ],
-  "author": "",
-  "license": "ISC"
+    "typescript": "^5",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@tailwindcss/postcss": "^4",
+    "tailwindcss": "^4",
+    "eslint": "^9",
+    "eslint-config-next": "16.0.0"
+  }
 }
