@@ -1,198 +1,211 @@
-# Viber - Full-Stack Application
+# Viber - NestJS Application
 
-A modern full-stack application with React + Vite frontend and Node.js + Express backend.
+A modern NestJS application built with best practices, TypeScript, and modular architecture.
+
+## Features
+
+- **NestJS Framework** - Progressive Node.js framework for building efficient and scalable server-side applications
+- **TypeScript** - Strongly typed programming language
+- **Modular Architecture** - Well-organized code structure with separate modules
+- **Validation** - Request validation using class-validator and class-transformer
+- **Health Checks** - Built-in health check endpoints using @nestjs/terminus
+- **Configuration Management** - Environment-based configuration using @nestjs/config
+- **Error Handling** - Global exception filters for consistent error responses
+- **API Versioning** - URI-based API versioning
+- **CORS Enabled** - Cross-Origin Resource Sharing configured
+- **Testing** - Jest testing framework configured
 
 ## Project Structure
 
 ```
 viber/
-├── backend/           # Node.js + Express backend
-│   ├── src/
-│   │   └── server.js  # Main server file
-│   ├── package.json
-│   └── .env.example
-├── frontend/          # React + Vite frontend
-│   ├── src/
-│   │   ├── App.jsx
-│   │   └── main.jsx
-│   ├── package.json
-│   └── vite.config.js
-├── package.json       # Root workspace configuration
-└── README.md
+├── src/
+│   ├── common/              # Shared utilities, filters, guards, etc.
+│   │   ├── decorators/
+│   │   ├── filters/
+│   │   │   └── http-exception.filter.ts
+│   │   ├── guards/
+│   │   ├── interceptors/
+│   │   └── pipes/
+│   ├── config/              # Configuration files
+│   │   └── configuration.ts
+│   ├── modules/             # Feature modules
+│   │   ├── health/          # Health check module
+│   │   │   ├── health.controller.ts
+│   │   │   └── health.module.ts
+│   │   └── users/           # Users module (CRUD example)
+│   │       ├── dto/
+│   │       │   ├── create-user.dto.ts
+│   │       │   └── update-user.dto.ts
+│   │       ├── entities/
+│   │       │   └── user.entity.ts
+│   │       ├── users.controller.ts
+│   │       ├── users.module.ts
+│   │       └── users.service.ts
+│   ├── app.controller.ts    # Root controller
+│   ├── app.module.ts        # Root module
+│   ├── app.service.ts       # Root service
+│   └── main.ts              # Application entry point
+├── test/                    # E2E tests
+├── .env.example            # Example environment variables
+├── .eslintrc.js            # ESLint configuration
+├── .prettierrc             # Prettier configuration
+├── nest-cli.json           # NestJS CLI configuration
+├── tsconfig.json           # TypeScript configuration
+├── tsconfig.build.json     # TypeScript build configuration
+└── package.json            # Dependencies and scripts
 ```
 
-## Tech Stack
+## Prerequisites
 
-### Frontend
-- **React 19** - Latest version of React
-- **Vite 7** - Next generation frontend tooling
-- **Modern ESLint** - Code quality and consistency
+- Node.js >= 20.19.0
+- npm >= 10.0.0
 
-### Backend
-- **Node.js** - JavaScript runtime
-- **Express 4** - Web framework
-- **CORS** - Cross-origin resource sharing
-- **dotenv** - Environment variable management
+## Installation
 
-## Getting Started
-
-### Prerequisites
-- Node.js (v18 or higher recommended)
-- npm or yarn
-
-### Installation
-
-1. Clone the repository
 ```bash
-git clone <your-repo-url>
-cd viber
-```
-
-2. Install all dependencies (root, frontend, and backend)
-```bash
-npm run install:all
-```
-
-Alternatively, install manually:
-```bash
-# Install root dependencies
-npm install
-
-# Install backend dependencies
-cd backend
-npm install
-
-# Install frontend dependencies
-cd ../frontend
+# Install dependencies
 npm install
 ```
 
-### Environment Setup
+## Configuration
 
-Create a `.env` file in the `backend` directory:
+1. Copy the example environment file:
 ```bash
-cd backend
 cp .env.example .env
 ```
 
-Edit the `.env` file as needed (default PORT is 5000).
-
-### Running the Application
-
-#### Option 1: Run both frontend and backend together (recommended)
-```bash
-npm run dev
+2. Update the `.env` file with your configuration:
+```env
+NODE_ENV=development
+PORT=3000
+DATABASE_HOST=localhost
+DATABASE_PORT=5432
+DATABASE_USERNAME=postgres
+DATABASE_PASSWORD=postgres
+DATABASE_NAME=viber
+JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
+JWT_EXPIRES_IN=1d
 ```
 
-#### Option 2: Run separately
+## Running the Application
 
-**Terminal 1 - Backend:**
 ```bash
-npm run dev:backend
-# or
-cd backend && npm run dev
+# Development mode with hot-reload
+npm run start:dev
+
+# Production mode
+npm run build
+npm run start:prod
+
+# Debug mode
+npm run start:debug
 ```
 
-**Terminal 2 - Frontend:**
-```bash
-npm run dev:frontend
-# or
-cd frontend && npm run dev
-```
-
-### Accessing the Application
-
-- **Frontend:** http://localhost:3000
-- **Backend API:** http://localhost:5000
-- **Health Check:** http://localhost:5000/api/health
-
-## Available Scripts
-
-### Root Level
-- `npm run install:all` - Install all dependencies
-- `npm run dev` - Run both frontend and backend concurrently
-- `npm run dev:backend` - Run only backend
-- `npm run dev:frontend` - Run only frontend
-- `npm run build:frontend` - Build frontend for production
-
-### Backend
-- `npm run dev` - Start development server with auto-reload
-- `npm start` - Start production server
-
-### Frontend
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
+The application will be available at `http://localhost:3000`
 
 ## API Endpoints
 
-### GET /api/health
-Health check endpoint
-```json
-{
-  "status": "ok",
-  "message": "Server is running!"
-}
-```
+### Root
+- `GET /` - Welcome message
 
-### GET /api/hello
-Demo endpoint
-```json
-{
-  "message": "Hello from the backend!"
-}
-```
+### Health
+- `GET /api/v1/health` - Health check endpoint
 
-## Development
+### Users (Example CRUD)
+- `POST /api/v1/users` - Create a new user
+- `GET /api/v1/users` - Get all users
+- `GET /api/v1/users/:id` - Get a user by ID
+- `PUT /api/v1/users/:id` - Update a user
+- `DELETE /api/v1/users/:id` - Delete a user
 
-### Adding New Backend Routes
-Edit `backend/src/server.js` and add your routes:
-```javascript
-app.get('/api/your-route', (req, res) => {
-  res.json({ data: 'your data' });
-});
-```
+### Example Request
 
-### Adding New Frontend Components
-Create components in `frontend/src/components/` and import them in `App.jsx`.
-
-### Proxy Configuration
-The frontend is configured to proxy `/api` requests to the backend (http://localhost:5000).
-This is configured in `frontend/vite.config.js`.
-
-## Building for Production
-
-1. Build the frontend:
 ```bash
-npm run build:frontend
+# Create a user
+curl -X POST http://localhost:3000/api/v1/users \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "John Doe",
+    "email": "john@example.com",
+    "password": "password123"
+  }'
+
+# Get all users
+curl http://localhost:3000/api/v1/users
 ```
 
-2. The built files will be in `frontend/dist/`
+## Testing
 
-3. The backend is configured to serve the built frontend files in production.
+```bash
+# Unit tests
+npm run test
+
+# Watch mode
+npm run test:watch
+
+# Test coverage
+npm run test:cov
+
+# E2E tests
+npm run test:e2e
+```
+
+## Code Quality
+
+```bash
+# Lint
+npm run lint
+
+# Format
+npm run format
+```
 
 ## Deployment
 
-### Railway Deployment
+### Railway
 
-This application is configured for single-service deployment on Railway:
+This application is configured for deployment on Railway.
 
-1. **Connect your repository** to Railway
-2. **Railway will automatically**:
-   - Run `npm run build` to build the frontend
-   - Run `npm start` to start the backend server
-   - The backend serves both API routes (`/api/*`) and frontend static files
+1. Push your code to GitHub
+2. Connect your repository to Railway
+3. Set environment variables in Railway dashboard
+4. Deploy!
 
-3. **No additional configuration needed** - the app is ready to deploy!
+The application will automatically build and deploy using the configuration in `railway.json` and `Procfile`.
 
-For detailed deployment instructions and troubleshooting, see [RAILWAY_DEPLOYMENT.md](./RAILWAY_DEPLOYMENT.md).
+### Environment Variables for Production
 
-### Production Architecture
-- Single service serves both frontend and backend
-- API routes: `/api/*`
-- All other routes: serve React app
-- No CORS issues or separate domains needed
+Make sure to set these environment variables in your production environment:
+- `NODE_ENV=production`
+- `PORT` (Railway sets this automatically)
+- Database credentials
+- `JWT_SECRET` (use a strong, random secret)
+
+## Best Practices Implemented
+
+1. **Modular Structure** - Code organized into feature modules
+2. **DTOs** - Data Transfer Objects for request validation
+3. **Entities** - Domain models separated from DTOs
+4. **Services** - Business logic separated from controllers
+5. **Exception Filters** - Global error handling
+6. **Validation** - Request validation using decorators
+7. **Configuration** - Environment-based configuration
+8. **Health Checks** - Application health monitoring
+9. **API Versioning** - Versioned API endpoints
+10. **TypeScript** - Full type safety
+
+## Adding New Modules
+
+Use NestJS CLI to generate new modules:
+
+```bash
+# Generate a new module
+nest generate module modules/feature-name
+
+# Generate a complete CRUD resource
+nest generate resource modules/feature-name
+```
 
 ## License
 
